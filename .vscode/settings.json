@@ -1,0 +1,23 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "backup.py": true,
+        "chains.py": true,
+        "llama_cpp_python-0.3.2-cp312-cp312-win_amd64.whl": true,
+        "mistral-7b-v0.1.Q4_K_M.gguf": true,
+        "req.txt": true,
+        "docker-compose.yml": true
+    },
+    "hide-files.files": [
+        "backup.py",
+        "chains.py",
+        "llama_cpp_python-0.3.2-cp312-cp312-win_amd64.whl",
+        "mistral-7b-v0.1.Q4_K_M.gguf",
+        "req.txt",
+        "docker-compose.yml"
+    ]
+}
