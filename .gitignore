@@ -1,21 +1,39 @@
-# Ignore Python virtual environment
+# Ignore Python virtual environments
 venv/
 .venv/
 
-# Ignore Python bytecode
+# Ignore Python bytecode and cache
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
-# Ignore environment files
+# Ignore environment variables and secrets
 .env
 
 # Ignore large model files
 *.gguf
+*.pth
+*.pt
+*.bin
 
-# Ignore OS files
+# Ignore OS-specific files
 .DS_Store
 Thumbs.db
-".env" 
-"*.gguf" 
-"__pycache__/" 
-".streamlit/" 
+
+# Ignore Streamlit config/cache
+.streamlit/
+
+# Ignore Milvus and other database/data volumes
+volumes/
+data/
+output/
+logs/
+
+# Ignore model directories (if not source code)
+flan-ul2/
+
+# VS Code settings (optional)
+.vscode/
+
+# Jupyter Notebook checkpoints (optional)
+.ipynb_checkpoints/
