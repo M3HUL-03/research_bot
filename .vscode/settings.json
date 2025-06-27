@@ -10,7 +10,9 @@
         "llama_cpp_python-0.3.2-cp312-cp312-win_amd64.whl": true,
         "mistral-7b-v0.1.Q4_K_M.gguf": true,
         "req.txt": true,
-        "docker-compose.yml": true
+        "docker-compose.yml": true,
+        "volumes": true,
+        "flan-ul2": true
     },
     "hide-files.files": [
         "backup.py",
@@ -18,6 +20,8 @@
         "llama_cpp_python-0.3.2-cp312-cp312-win_amd64.whl",
         "mistral-7b-v0.1.Q4_K_M.gguf",
         "req.txt",
-        "docker-compose.yml"
+        "docker-compose.yml",
+        "volumes",
+        "flan-ul2"
     ]
 }
