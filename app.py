@@ -13,14 +13,14 @@ nest_asyncio.apply()
 
 def main():
     load_dotenv()
-    # Modern page setup
+   
     st.set_page_config(
         page_title="Research Assistant",
         page_icon="📚",
         layout="centered"
     )
     
-    # Clean header with icon
+
     st.markdown("""
     <div style="text-align:center; margin-bottom:30px">
         <h1 style="display:inline-block; border-bottom:2px solid #4f8bf9; padding-bottom:10px">
@@ -29,12 +29,12 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # Initialize session state
+    # session state intialize kar diya
     for key in ["vector_store", "corpus", "chat_history"]:
         if key not in st.session_state:
             st.session_state[key] = None if key != "chat_history" else []
 
-    # Improved sidebar with cleaner design
+    # sidebar 
     with st.sidebar:
         st.subheader("Chat History")
         if st.button("🗑️ Clear History", use_container_width=True):
@@ -47,7 +47,7 @@ def main():
                 st.markdown(f"**Answer:** {a}")
         st.divider()
 
-    # File upload section with card-style design
+    # File upload 
     with st.container():
         st.subheader("📂 Upload Documents")
         pdf_docs = st.file_uploader(
@@ -79,14 +79,14 @@ def main():
                 st.success(f"✅ Loaded {len(text_chunks)} chunks from {len(pdf_docs)} PDF(s)!")
                 progress_bar.empty()
 
-    # Question input with modern design
+    # Question input 
     user_question = st.text_input(
         "Ask about your documents:",
         placeholder="Type your research question here...",
         label_visibility="collapsed"
     )
 
-    # Answer section with improved layout
+    # Answer 
     if user_question and st.session_state.vector_store:
         corpus = st.session_state.vector_store.get_corpus()
         if not corpus:
@@ -124,13 +124,13 @@ def main():
 
                 full_context = "\n\n".join(context_chunks)
 
-                # Debug toggle
+                # Debug blehh
                 debug = st.checkbox("🐞 Show retrieved context (debug mode)")
                 if debug:
                     with st.expander("Retrieved Context"):
                         st.markdown(full_context)
 
-                # Improved prompt
+                # system prompt
                 prompt = (
                     "You are a knowledgeable research assistant. "
                     "Answer the user's question using ONLY the provided context. "
@@ -144,19 +144,19 @@ def main():
                     "Answer:"
                 )
 
-                # Generate answer
+                
                 answer = ask_mistral(prompt, max_tokens=768, temperature=0.2)
                 
-                # Add to chat history
+                
                 st.session_state.chat_history.append((user_question, answer))
 
-                # Display answer with clean design
+                #Answer display
                 st.markdown("---")
                 st.subheader("💡 Answer")
                 st.markdown(answer)
                 st.divider()
 
-                # Source context with improved layout
+                # Source context
                 with st.expander("🔍 Show Source Context"):
                     flat_hits = []
                     for idx, hits in enumerate(results):
@@ -167,13 +167,13 @@ def main():
                                 text = entity.get("text", "")
                                 flat_hits.append((metadata, text))
                     
-                    # Display top 3 sources with highlighting
+                    # TOP 3 Context
                     for idx, (metadata, text) in enumerate(flat_hits[:3]):
                         source = metadata.get("source", "unknown")
                         page = metadata.get("page", "N/A")
                         line = metadata.get("line", "N/A")
                         
-                        # Source card design
+                        # Source card
                         with st.container():
                             st.markdown(f"**📄 Source {idx+1}:** `{source}` (Page {page}, Line {line})")
                             st.caption(highlight_relevant_text(text, user_question))

@@ -78,6 +78,9 @@ def get_text_chunks(raw_docs, chunk_size=600, chunk_overlap=20):
             char_ptr += chunk_size - chunk_overlap
     return text_chunks
 
+
+
+#NOT FUNCTIONAL
 def highlight_relevant_text(text, query, max_keywords=5):
     """
     Bold the most relevant keywords from the query in the text.
